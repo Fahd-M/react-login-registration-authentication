@@ -5,8 +5,9 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
-import axios from './api/axios';
+import axios from '../api/axios';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 // must start with lower or uppcase letter then followed by 3-23 characters either lower/uppercase/number/underscore/hyphen
@@ -82,7 +83,7 @@ const Register = () => {
     // setSuccess(true);
 
     try {
-        const response = await axios.post(REGISTER_URL, JSON.stringify({ user, pwd}),
+        const response = await axios.post(REGISTER_URL, JSON.stringify({ user, pwd }),
             {
                 headers: { 'Content-Type': 'application/json'},
                 withCredentials: true 
@@ -248,8 +249,7 @@ const Register = () => {
             Already registered?
             <br />
             <span className="line">
-              {/* {Router link would go here} */}
-              <a href="#"> Sign In </a>
+              <Link to="/login"> Sign In </Link>
             </span>
           </p>
         </section>
