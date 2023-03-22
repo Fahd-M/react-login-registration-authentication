@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
-
 import { useNavigate, useLocation } from 'react-router-dom';
 
 
@@ -24,6 +23,7 @@ const Users = () => {
 
             } catch(err) {
                 console.error(err);
+                navigate('/login', { state: { from: location }, replace: true}); // takes location user comes from and sends user back to where they were
             }
         }
 

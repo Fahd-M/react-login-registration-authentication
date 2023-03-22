@@ -1,7 +1,7 @@
 // to attach interceptors to the axios private instance
 //interceptor is like event listeners. Get attached but also must remove them.
 
-import axios, { axiosPrivate } from "../api/axios";
+import { axiosPrivate } from "../api/axios";
 import { useEffect } from "react";
 import useRefreshToken from "./useRefreshToken";
 import useAuth from "./useAuth";
@@ -25,7 +25,7 @@ const useAxiosPrivate = () => {
             response => response, 
             async (error) => { // if access token expires  
                 const prevRequest = error?.config; 
-                if (error?.response.status === 403 && !prevRequest?.sent) {
+                if (error?.response?.status === 403 && !prevRequest?.sent) {
                     prevRequest.sent = true;
                     const newAccessToken = await refresh();
                     prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;

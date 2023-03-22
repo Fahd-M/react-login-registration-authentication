@@ -89,14 +89,16 @@ const Register = () => {
                 withCredentials: true 
             }
         ); //await works due to handleSubmit being async
-        console.log(response.data); // would be response from server via axios
+        console.log(response?.data); // would be response from server via axios
         console.log(response.accessToken); // backend could have accessToken 
         console.log(JSON.stringify(response));
 
         setSuccess(true);
 
         // clear input fields 
-        //setUser('') && setPwd('') && setMatchPwd('');
+        setUser('');
+        setPwd('');
+        setMatchPwd('');
 
     } catch (err) {
         if (!err?.response) {
